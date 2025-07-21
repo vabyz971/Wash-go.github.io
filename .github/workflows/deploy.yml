@@ -17,7 +17,8 @@ jobs:
       # Pick your own package manager and build script
       - run: npm install -g bun
       - run: bun install
-      - run: bun run build
+      - run: bun run build --preset github_pages
+      - run: npx serve .output/public
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
