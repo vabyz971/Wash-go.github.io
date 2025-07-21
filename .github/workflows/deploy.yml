@@ -15,6 +15,7 @@ jobs:
         with:
           node-version: "24"
       # Pick your own package manager and build script
+      - run: npm install -g bun
       - run: bun install
       - run: bun run build
       - name: Upload artifact
