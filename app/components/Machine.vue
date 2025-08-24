@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="isRunning">
-      <UCard variant="soft" class="ring-transparent h-65 flex flex-col justify-center items-center"
+      <UCard variant="soft" class="ring-transparent h-full flex flex-col justify-center items-center"
         :ui="{ header: 'border-none pb-0', root: 'border-none' }">
         <template #header>
           <p class="font-sans text-2xl font-bold uppercase text-center">{{ props.title }} en marche</p>
@@ -13,7 +13,7 @@
     </div>
     <div v-else>
       <UCard variant="soft" class="ring-transparent flex flex-col justify-items-center items-center"
-        :ui="{ header: 'border-none pb-0', body: 'border-none sm:p-4 p-2', footer: 'pt-2', root: 'border-none' }">
+        :ui="{ header: 'border-none pb-0', body: 'border-none p-2', footer: 'pt-2', root: 'border-none' }">
         <template #header>
           <p class="font-sans text-3xl font-bold uppercase">{{ title }}</p>
         </template>
@@ -43,7 +43,6 @@
 </template>
 
 <script lang="ts" setup>
-
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 
 const props = defineProps({
@@ -150,8 +149,7 @@ const notification = () => {
       Notification.requestPermission().then(function (permission) {
         if (permission === "granted") {
           var notification = new Notification(`Wash & Go`, {
-            body: `${props.title} terminer`,
-            icon: `/img/${props.title}_nt.svg` // Optionnel
+            body: `${props.title} terminer`
           });
 
           notification.onclick = function () {
